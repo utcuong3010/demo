@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCardTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCardLabel_id}"/>
+                    <h:outputText value="#{cardController.selected.id}" title="#{bundle.ViewCardTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCardLabel_cardNo}"/>
+                    <h:outputText value="#{cardController.selected.cardNo}" title="#{bundle.ViewCardTitle_cardNo}"/>
+                    <h:outputText value="#{bundle.ViewCardLabel_policyNo}"/>
+                    <h:outputText value="#{cardController.selected.policyNo}" title="#{bundle.ViewCardTitle_policyNo}"/>
+                    <h:outputText value="#{bundle.ViewCardLabel_gender}"/>
+                    <h:outputText value="#{cardController.selected.gender}" title="#{bundle.ViewCardTitle_gender}"/>
+                    <h:outputText value="#{bundle.ViewCardLabel_status}"/>
+                    <h:outputText value="#{cardController.selected.status}" title="#{bundle.ViewCardTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cardController.destroyAndView}" value="#{bundle.ViewCardDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCardEditLink}"/>
+                <br />
+                <h:commandLink action="#{cardController.prepareCreate}" value="#{bundle.ViewCardCreateLink}" />
+                <br />
+                <h:commandLink action="#{cardController.prepareList}" value="#{bundle.ViewCardShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCardIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

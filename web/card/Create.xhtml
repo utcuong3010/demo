@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCardTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                  
+                    <h:outputLabel value="#{bundle.CreateCardLabel_cardNo}" for="cardNo" />
+                    <h:inputText id="cardNo" value="#{cardController.selected.cardNo}" title="#{bundle.CreateCardTitle_cardNo}" />
+                    <h:outputLabel value="#{bundle.CreateCardLabel_policyNo}" for="policyNo" />
+                    <h:inputText id="policyNo" value="#{cardController.selected.policyNo}" title="#{bundle.CreateCardTitle_policyNo}" />
+                    <h:outputLabel value="#{bundle.CreateCardLabel_gender}" for="gender" />
+                    <h:selectOneMenu value="#{cardController.selected.gender}">
+                        <f:selectItem itemValue="MALE" itemLabel="MALE" />
+                        <f:selectItem itemValue="FEMALE" itemLabel="FEMALE" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateCardLabel_status}" for="status" />
+                                     
+                     <h:selectOneMenu value="#{cardController.selected.status}">
+                        <f:selectItem itemValue="ACTIVED" itemLabel="ACTIVATE" />
+                        <f:selectItem itemValue="DEACTIVED" itemLabel="DEACTIVATE" />
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cardController.create}" value="#{bundle.CreateCardSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cardController.prepareList}" value="#{bundle.CreateCardShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCardIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
